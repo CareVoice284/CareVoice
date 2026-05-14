@@ -28,9 +28,20 @@ export const handler: Handler = async (event) => {
       const { id, status, assignedTo } = JSON.parse(event.body || '{}');
       if (!id) return { statusCode: 400, body: JSON.stringify({ error: 'ID is required' }) };
 
+      let actualAssignedTo = assignedTo;
+      if (assignedTo === 'teknisi-1') {
+        const { users } = await import('../../src/db/schema');
+        const teknisiUser = await db.select().from(users).where(eq(users.role, 'teknisi')).limit(1);
+        if (teknisiUser.length > 0) {
+          actualAssignedTo = teknisiUser[0].id;
+        } else {
+          actualAssignedTo = null;
+        }
+      }
+
       const updateData: any = { updatedAt: new Date() };
       if (status) updateData.status = status;
-      if (assignedTo !== undefined) updateData.assignedTo = assignedTo;
+      if (actualAssignedTo !== undefined && actualAssignedTo !== null) updateData.assignedTo = actualAssignedTo;
 
       const updatedReport = await db.update(reports).set(updateData).where(eq(reports.id, id)).returning();
       return { statusCode: 200, body: JSON.stringify(updatedReport[0]) };

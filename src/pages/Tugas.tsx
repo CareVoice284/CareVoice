@@ -19,7 +19,7 @@ export const Tugas = () => {
              { id: '2', title: 'Lampu Koridor Mati', location: 'Lantai 1', status: 'diproses', priority: 'rendah', createdAt: new Date().toISOString() }
            ]);
         } else {
-           setReports(data.filter((r: any) => r.status === 'diproses'));
+           setReports(data.filter((r: any) => r.status === 'diproses' && r.assignedTo === user?.id));
         }
       } catch (error) {
         console.error('Error fetching reports:', error);
