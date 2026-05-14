@@ -6,5 +6,6 @@ import * as schema from './schema';
 // Ensure DATABASE_URL is available in process.env
 neonConfig.fetchConnectionCache = true;
 
-const sql = neon(process.env.DATABASE_URL!);
+const connectionString = process.env.DATABASE_URL || "postgresql://neondb_owner:npg_IAumTdQ31egH@ep-frosty-silence-aqqw2c7c-pooler.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require";
+const sql = neon(connectionString);
 export const db = drizzle(sql, { schema });
