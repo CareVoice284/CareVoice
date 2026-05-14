@@ -122,7 +122,7 @@ export const Login = () => {
                 <span>pw: <b>password</b></span>
               </div>
               <div className="flex justify-between text-gray-600 bg-gray-50 p-2 rounded">
-                <span>Staf: <b>user@test.com</b></span>
+                <span>Pasien: <b>user@test.com</b></span>
                 <span>pw: <b>password</b></span>
               </div>
               <div className="flex justify-between text-gray-600 bg-gray-50 p-2 rounded">

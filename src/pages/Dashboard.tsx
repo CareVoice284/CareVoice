@@ -78,7 +78,7 @@ export const Dashboard = () => {
           <p className="text-gray-600">Gunakan menu di sebelah kiri untuk navigasi. Setiap peran memiliki akses yang berbeda:</p>
           <ul className="mt-4 space-y-2 text-sm text-gray-600 list-disc list-inside">
             <li><b>Admin:</b> Dapat melihat semua laporan dan melakukan verifikasi serta penugasan teknisi.</li>
-            <li><b>Staf Unit:</b> Dapat membuat laporan baru dan melihat status tiket.</li>
+            <li><b>Pasien:</b> Dapat membuat laporan baru dan melihat status tiket.</li>
             <li><b>Teknisi:</b> Dapat melihat tugas yang diberikan dan memperbarui status pengerjaan.</li>
           </ul>
         </div>

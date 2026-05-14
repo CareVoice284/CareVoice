@@ -24,7 +24,7 @@ export const handler: Handler = async (event) => {
     // Dummy fallback for testing if database is empty due to no seed
     if (!user) {
        if (email === 'admin@test.com' && password === 'password') return { statusCode: 200, body: JSON.stringify({ token: 'fake-jwt-admin', user: { id: 'admin-1', email, role: 'admin', name: 'Admin Sarpras' } }) };
-       if (email === 'user@test.com' && password === 'password') return { statusCode: 200, body: JSON.stringify({ token: 'fake-jwt-user', user: { id: 'user-1', email, role: 'user', name: 'Staf Unit' } }) };
+       if (email === 'user@test.com' && password === 'password') return { statusCode: 200, body: JSON.stringify({ token: 'fake-jwt-user', user: { id: 'user-1', email, role: 'user', name: 'Pasien' } }) };
        if (email === 'teknisi@test.com' && password === 'password') return { statusCode: 200, body: JSON.stringify({ token: 'fake-jwt-teknisi', user: { id: 'teknisi-1', email, role: 'teknisi', name: 'Teknisi 1' } }) };
        
        return { statusCode: 401, body: JSON.stringify({ error: 'Invalid credentials' }) };

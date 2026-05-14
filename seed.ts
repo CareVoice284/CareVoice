@@ -13,7 +13,7 @@ async function main() {
   try {
     await db.insert(schema.users).values([
       { email: 'admin@test.com', password: 'password', name: 'Admin Sarpras', role: 'admin' },
-      { email: 'user@test.com', password: 'password', name: 'Staf Unit', role: 'user' },
+      { email: 'user@test.com', password: 'password', name: 'Pasien', role: 'user' },
       { email: 'teknisi@test.com', password: 'password', name: 'Teknisi Handal', role: 'teknisi' },
     ]).onConflictDoNothing(); // prevent duplicates
     console.log('Seeding successful!');
