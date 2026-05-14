@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthStore } from '../lib/store';
+import { Navigate } from 'react-router-dom';
 import { Activity, CheckCircle, Clock, ListChecks } from 'lucide-react';
 
 interface Stats {
@@ -13,6 +14,8 @@ export const Dashboard = () => {
   const { user } = useAuthStore();
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
+
+  if (user?.role === 'user') return <Navigate to="/input" replace />;
 
   useEffect(() => {
     const fetchStats = async () => {

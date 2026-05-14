@@ -12,6 +12,10 @@ export const Layout = () => {
   }
 
   const getNavItems = () => {
+    if (user.role === 'user') {
+      return [{ path: '/input', label: 'Input Laporan', icon: FilePlus }];
+    }
+
     const baseItems = [
       { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
       { path: '/monitoring', label: 'Monitoring', icon: Activity },
@@ -19,8 +23,6 @@ export const Layout = () => {
 
     if (user.role === 'admin') {
       baseItems.push({ path: '/verifikasi', label: 'Verifikasi Laporan', icon: CheckSquare });
-    } else if (user.role === 'user') {
-      baseItems.push({ path: '/input', label: 'Input Laporan', icon: FilePlus });
     } else if (user.role === 'teknisi') {
       baseItems.push({ path: '/tugas', label: 'Tugas Saya', icon: ClipboardList });
     }

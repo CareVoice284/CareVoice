@@ -30,7 +30,13 @@ export const Login = () => {
       }
 
       login(data.user, data.token);
-      navigate('/dashboard');
+      if (data.user.role === 'user') {
+        navigate('/input');
+      } else if (data.user.role === 'teknisi') {
+        navigate('/tugas');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (err: any) {
       setError(err.message);
     } finally {

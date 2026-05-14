@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthStore } from '../lib/store';
+import { Navigate } from 'react-router-dom';
 
 export const Monitoring = () => {
+  const { user } = useAuthStore();
   const [reports, setReports] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  if (user?.role === 'user') return <Navigate to="/input" replace />;
 
   useEffect(() => {
     const fetchReports = async () => {
